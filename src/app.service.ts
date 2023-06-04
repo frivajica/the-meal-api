@@ -19,7 +19,7 @@ export class AppService implements OnModuleInit {
     try {
       // Fetch and save all categories.
       const { data } = await firstValueFrom(
-        this.httpService.get("https://www.themealdb.com/api/json/v1/1/categories.php")
+        this.httpService.get(`${process.env.API_URL}/categories.php`)
       );
       this.globalService.setCategories(data.categories);
 
@@ -49,7 +49,7 @@ export class AppService implements OnModuleInit {
 
   async fetchSpecificCategory(category: string) {
     const { data } = await firstValueFrom(
-      this.httpService.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+      this.httpService.get(`${process.env.API_URL}/filter.php?c=${category}`)
     );
     return data;
   }

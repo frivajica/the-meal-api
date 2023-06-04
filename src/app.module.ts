@@ -9,7 +9,12 @@ import { GlobalService } from "./global.service";
 import { MealsModule } from "./meals/meals.module";
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), CategoriesModule, MealsModule, HttpModule],
+  imports: [
+    ConfigModule.forRoot({ envFilePath: ".env", isGlobal: true }),
+    CategoriesModule,
+    MealsModule,
+    HttpModule,
+  ],
   controllers: [AppController],
   providers: [AppService, GlobalService],
 })
