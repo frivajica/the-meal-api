@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { writeFileSync, readFileSync } from 'fs';
 
 import { Category } from './interfaces/categories';
+import { Meal } from './interfaces/meals';
 
 @Injectable()
 export class GlobalService {
@@ -18,11 +19,14 @@ export class GlobalService {
     return JSON.parse(categories);
   }
 
-  setMeals(data: any) {
-    this.meals = data;
+  setMeals(data: Record<string, Meal[]>) {
+    writeFileSync('meals.json', JSON.stringify(data, null, 2));
   }
 
-  getMeals(): any {
-    return this.meals;
+  getMeals(category): Record<string, Meal[]> {
+    const meals = readFileSync('meals.json', 'utf8');
+    const allMeals = JSON.parse(meals);
+    if (!category) return allMeals;
+    return allMeals[category];
   }
 }
