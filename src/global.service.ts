@@ -6,9 +6,6 @@ import { Meal } from "./interfaces/meals";
 
 @Injectable()
 export class GlobalService {
-  private categories: Category[];
-  private meals: any;
-
   setCategories(data: Category[]) {
     if (!data) return;
     writeFileSync("categories.json", JSON.stringify(data, null, 2));
