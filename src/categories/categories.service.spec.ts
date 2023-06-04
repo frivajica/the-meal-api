@@ -1,9 +1,9 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test, TestingModule } from "@nestjs/testing";
 
-import { CategoriesService } from './categories.service';
-import { GlobalService } from '../global.service';
+import { CategoriesService } from "./categories.service";
+import { GlobalService } from "../global.service";
 
-describe('CategoriesService', () => {
+describe("CategoriesService", () => {
   let service: CategoriesService;
 
   beforeEach(async () => {
@@ -14,11 +14,11 @@ describe('CategoriesService', () => {
     service = module.get<CategoriesService>(CategoriesService);
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(service).toBeDefined();
   });
 
-  it('should return an array of categories', async () => {
+  it("should return an array of categories", async () => {
     const categories = await service.getCategories();
     expect(Array.isArray(categories)).toBe(true);
   });

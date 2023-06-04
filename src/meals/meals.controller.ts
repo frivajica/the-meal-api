@@ -1,9 +1,9 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query } from "@nestjs/common";
 
-import { Meal } from 'src/interfaces/meals';
-import { MealsService } from './meals.service';
+import { Meal } from "src/interfaces/meals";
+import { MealsService } from "./meals.service";
 
-@Controller('meals')
+@Controller("meals")
 export class MealsController {
   constructor(private readonly mealsService: MealsService) {}
 

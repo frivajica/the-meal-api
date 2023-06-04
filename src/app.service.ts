@@ -1,17 +1,17 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
-import { firstValueFrom } from 'rxjs';
+import { Injectable, OnModuleInit } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
+import { firstValueFrom } from "rxjs";
 
-import { GlobalService } from './global.service';
-import { generatePrice } from './utils/prices';
-import { Category } from './interfaces/categories';
-import { FetchedMeal } from './interfaces/meals';
+import { GlobalService } from "./global.service";
+import { generatePrice } from "./utils/prices";
+import { Category } from "./interfaces/categories";
+import { FetchedMeal } from "./interfaces/meals";
 
 @Injectable()
 export class AppService implements OnModuleInit {
   constructor(
     private readonly globalService: GlobalService,
-    private readonly httpService: HttpService,
+    private readonly httpService: HttpService
   ) {}
 
   // Save all categories and meals on startup.
@@ -19,9 +19,7 @@ export class AppService implements OnModuleInit {
     try {
       // Fetch and save all categories.
       const { data } = await firstValueFrom(
-        this.httpService.get(
-          'https://www.themealdb.com/api/json/v1/1/categories.php',
-        ),
+        this.httpService.get("https://www.themealdb.com/api/json/v1/1/categories.php")
       );
       this.globalService.setCategories(data.categories);
 
@@ -34,7 +32,7 @@ export class AppService implements OnModuleInit {
             price: generatePrice(strCategory),
           }));
           return { category: strCategory, data: withPrice };
-        }),
+        })
       );
 
       // Set the category name as object key and data as value.
@@ -51,14 +49,12 @@ export class AppService implements OnModuleInit {
 
   async fetchSpecificCategory(category: string) {
     const { data } = await firstValueFrom(
-      this.httpService.get(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`,
-      ),
+      this.httpService.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
     );
     return data;
   }
 
   getHello(): string {
-    return 'Hello World!';
+    return "Hello World!";
   }
 }

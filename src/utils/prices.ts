@@ -24,11 +24,11 @@ const upperMiddleFixed =
 
 export function generatePrice(category) {
   switch (category) {
-    case 'Pork':
+    case "Pork":
       return generateRandom(globalMin, lowerMiddleFixed);
-    case 'Beef':
+    case "Beef":
       return generateRandom(lowerMiddleFixed, upperMiddleFixed);
-    case 'Lamb':
+    case "Lamb":
       return generateRandom(upperMiddleFixed, globalMax);
     default:
       return generateRandom(globalMin, globalMax);

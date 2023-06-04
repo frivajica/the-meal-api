@@ -1,8 +1,8 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { MealsService } from './meals.service';
-import { GlobalService } from '../global.service';
+import { Test, TestingModule } from "@nestjs/testing";
+import { MealsService } from "./meals.service";
+import { GlobalService } from "../global.service";
 
-describe('MealsService', () => {
+describe("MealsService", () => {
   let service: MealsService;
 
   beforeEach(async () => {
@@ -13,22 +13,20 @@ describe('MealsService', () => {
     service = module.get<MealsService>(MealsService);
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(service).toBeDefined();
   });
 
-  it('should return an object of categories', async () => {
+  it("should return an object of categories", async () => {
     const categories = await service.getMeals(undefined);
     const isObject =
-      typeof categories === 'object' &&
-      !Array.isArray(categories) &&
-      categories !== null;
+      typeof categories === "object" && !Array.isArray(categories) && categories !== null;
     expect(isObject).toBe(true);
     expect(Object.entries(categories).length).toBeGreaterThan(0);
   });
 
-  it('should return an array of meals for a specific category', async () => {
-    const meals = await service.getMeals('Beef');
+  it("should return an array of meals for a specific category", async () => {
+    const meals = await service.getMeals("Beef");
     expect(Array.isArray(meals)).toBe(true);
     expect(meals.length).toBeGreaterThan(0);
   });

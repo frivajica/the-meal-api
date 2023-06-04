@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from "@nestjs/common";
 
-import { Meal } from 'src/interfaces/meals';
-import { GlobalService } from '../global.service';
+import { Meal } from "src/interfaces/meals";
+import { GlobalService } from "../global.service";
 
 @Injectable()
 export class MealsService {

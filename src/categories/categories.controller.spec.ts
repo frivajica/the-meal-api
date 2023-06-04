@@ -1,10 +1,10 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test, TestingModule } from "@nestjs/testing";
 
-import { CategoriesController } from './categories.controller';
-import { CategoriesService } from './categories.service';
-import { GlobalService } from '../global.service';
+import { CategoriesController } from "./categories.controller";
+import { CategoriesService } from "./categories.service";
+import { GlobalService } from "../global.service";
 
-describe('CategoriesController', () => {
+describe("CategoriesController", () => {
   let controller: CategoriesController;
 
   beforeEach(async () => {
@@ -16,11 +16,11 @@ describe('CategoriesController', () => {
     controller = module.get<CategoriesController>(CategoriesController);
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(controller).toBeDefined();
   });
 
-  it('should return an array of categories', async () => {
+  it("should return an array of categories", async () => {
     const categories = await controller.getCategories();
     expect(Array.isArray(categories)).toBe(true);
   });
