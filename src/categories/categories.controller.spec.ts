@@ -1,16 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { CategoriesController } from './categories.controller';
 import { CategoriesService } from './categories.service';
-import { HttpModule } from '@nestjs/axios';
+import { GlobalService } from '../global.service';
 
 describe('CategoriesController', () => {
   let controller: CategoriesController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [HttpModule],
       controllers: [CategoriesController],
-      providers: [CategoriesService],
+      providers: [CategoriesService, GlobalService],
     }).compile();
 
     controller = module.get<CategoriesController>(CategoriesController);
