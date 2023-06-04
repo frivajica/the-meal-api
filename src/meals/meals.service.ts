@@ -1,12 +1,13 @@
 import { Injectable } from "@nestjs/common";
+
+import { Meal } from "src/interfaces/meals";
 import { GlobalService } from "../global.service";
-import { Category } from "src/interfaces/categories";
 
 @Injectable()
-export class CategoriesService {
+export class MealsService {
   constructor(private readonly globalService: GlobalService) {}
 
-  getCategories(): Category[] {
-    return this.globalService.getCategories();
+  getMeals(category): Record<string, Meal[]> {
+    return this.globalService.getMeals(category);
   }
 }
