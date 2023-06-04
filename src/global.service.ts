@@ -20,7 +20,7 @@ export class GlobalService {
     writeFileSync("meals.json", JSON.stringify(data, null, 2));
   }
 
-  getMeals(category): Record<string, Meal[]> {
+  getMeals(category: string | undefined): Record<string, Meal[]> {
     const meals = readFileSync("meals.json", "utf8");
     const allMeals = JSON.parse(meals);
     if (!category) return allMeals;

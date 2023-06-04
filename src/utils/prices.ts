@@ -4,7 +4,7 @@ const globalMax = 100;
 const lowerMiddle = generateRandom(globalMin, globalMax);
 const upperMiddle = generateRandom(lowerMiddle, globalMax);
 
-function generateRandom(min, max) {
+function generateRandom(min: number, max: number) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
@@ -22,7 +22,7 @@ const upperMiddleFixed =
     ? upperMiddle + 1
     : upperMiddle;
 
-export function generatePrice(category) {
+export function generatePrice(category: string) {
   switch (category) {
     case "Pork":
       return generateRandom(globalMin, lowerMiddleFixed);
