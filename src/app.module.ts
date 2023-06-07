@@ -7,6 +7,7 @@ import { AppService } from "./app.service";
 import { CategoriesModule } from "./categories/categories.module";
 import { GlobalService } from "./global.service";
 import { MealsModule } from "./meals/meals.module";
+import { PaymentModule } from "./payment/payment.module";
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { MealsModule } from "./meals/meals.module";
     CategoriesModule,
     MealsModule,
     HttpModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService, GlobalService],
