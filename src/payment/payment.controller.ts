@@ -9,7 +9,6 @@ export class PaymentController {
 
   @Post()
   generateSession(@Body() { ammount }): Promise<PaymentResponse> {
-    console.log(ammount);
     return this.paymentService.generateSession(ammount);
   }
 }
